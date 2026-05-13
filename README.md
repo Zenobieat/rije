@@ -1,45 +1,48 @@
-# 🚗 RijWissel App
+# 🚗 RijWissel v2
 
-Plan wisselstops voor lange ritten — per km of per uur.
+Plan wisselstops voor lange ritten — met echte kaart, route en tankstations.
 
-## Deployen op Vercel (5 minuten)
+## Wat de app doet
 
-### Stap 1 — Zet op GitHub
-1. Ga naar [github.com](https://github.com) → **New repository**
-2. Naam: `rijwissel` → **Create repository**
-3. Upload alle bestanden uit deze zip (sleep ze in de GitHub interface)
+1. Parseer een Google Maps routelink via Claude AI
+2. Geocodeert via Nominatim (OpenStreetMap) — gratis
+3. Berekent de exacte route via OSRM — gratis
+4. Zoekt tankstations langs de route via Overpass API — gratis
+5. Toont alles op een interactieve Leaflet kaart
 
-### Stap 2 — Deploy op Vercel
-1. Ga naar [vercel.com](https://vercel.com) → log in met GitHub
-2. Klik **Add New → Project**
-3. Kies je `rijwissel` repository → klik **Import**
-4. Klik **Deploy** (Vercel detecteert Next.js automatisch)
+**Enige vereiste API key:** Anthropic (voor stap 1 — route parsen uit de URL)
 
-### Stap 3 — API key toevoegen ⚠️ VERPLICHT
-Zonder dit werkt de app niet:
+---
 
-1. Ga in Vercel naar je project → **Settings → Environment Variables**
+## Deployen op Vercel
+
+### 1. Zet op GitHub
+
+1. Ga naar [github.com](https://github.com) → **New repository** → naam `rijwissel`
+2. Upload alle bestanden uit deze zip
+
+### 2. Deploy op Vercel
+
+1. Ga naar [vercel.com](https://vercel.com) → login met GitHub
+2. **Add New → Project** → kies `rijwissel` → **Import**
+3. Framework: **Next.js** (auto-detected) → klik **Deploy**
+
+### 3. ⚠️ API key instellen
+
+1. Vercel → jouw project → **Settings → Environment Variables**
 2. Voeg toe:
    - **Name:** `ANTHROPIC_API_KEY`
-   - **Value:** `sk-ant-...` (jouw Anthropic API key van [console.anthropic.com](https://console.anthropic.com))
-3. Klik **Save**
-4. Ga naar **Deployments** → klik op de drie puntjes → **Redeploy**
+   - **Value:** `sk-ant-...` (van [console.anthropic.com](https://console.anthropic.com))
+3. **Save** → daarna **Deployments → Redeploy**
 
-✅ Klaar! Je app is live op `https://rijwissel.vercel.app` (of gelijkaardig).
+---
 
 ## Lokaal testen
 
 ```bash
 npm install
-# Maak een .env.local bestand aan:
 echo "ANTHROPIC_API_KEY=sk-ant-..." > .env.local
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
-
-## Hoe het werkt
-
-1. Deel een Google Maps routelink
-2. Kies interval (per km of per uur)
-3. De app berekent wisselstops en toont tankstations in de buurt
