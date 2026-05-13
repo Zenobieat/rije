@@ -1,48 +1,30 @@
-# 🚗 RijWissel v2
+# 🚗 RijWissel v2 — 100% Gratis
 
-Plan wisselstops voor lange ritten — met echte kaart, route en tankstations.
+Plan wisselstops voor lange ritten. Geen betaalde APIs, geen API key nodig.
 
-## Wat de app doet
+## Gebruikte services (allemaal gratis)
+- **Nominatim** — OpenStreetMap geocoding
+- **OSRM** — Open Source Routing Machine (exacte routes)
+- **Overpass API** — tankstations uit OpenStreetMap
+- **Leaflet** — interactieve kaart
 
-1. Parseer een Google Maps routelink via Claude AI
-2. Geocodeert via Nominatim (OpenStreetMap) — gratis
-3. Berekent de exacte route via OSRM — gratis
-4. Zoekt tankstations langs de route via Overpass API — gratis
-5. Toont alles op een interactieve Leaflet kaart
-
-**Enige vereiste API key:** Anthropic (voor stap 1 — route parsen uit de URL)
-
----
-
-## Deployen op Vercel
+## Deployen op Vercel (gratis, ~3 minuten)
 
 ### 1. Zet op GitHub
-
-1. Ga naar [github.com](https://github.com) → **New repository** → naam `rijwissel`
-2. Upload alle bestanden uit deze zip
+1. Ga naar github.com → New repository → naam `rijwissel`
+2. Sleep alle bestanden uit deze zip naar de GitHub interface
+3. Klik Commit changes
 
 ### 2. Deploy op Vercel
+1. Ga naar vercel.com → login met GitHub
+2. Add New → Project → kies `rijwissel` → Import
+3. Framework: Next.js (automatisch gedetecteerd)
+4. Klik Deploy — geen environment variables nodig!
 
-1. Ga naar [vercel.com](https://vercel.com) → login met GitHub
-2. **Add New → Project** → kies `rijwissel` → **Import**
-3. Framework: **Next.js** (auto-detected) → klik **Deploy**
-
-### 3. ⚠️ API key instellen
-
-1. Vercel → jouw project → **Settings → Environment Variables**
-2. Voeg toe:
-   - **Name:** `ANTHROPIC_API_KEY`
-   - **Value:** `sk-ant-...` (van [console.anthropic.com](https://console.anthropic.com))
-3. **Save** → daarna **Deployments → Redeploy**
-
----
+Je app is live op https://rijwissel.vercel.app
 
 ## Lokaal testen
-
-```bash
 npm install
-echo "ANTHROPIC_API_KEY=sk-ant-..." > .env.local
 npm run dev
-```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open http://localhost:3000

@@ -188,7 +188,10 @@ export default function Home() {
                 onChange={e => setMapsUrl(e.target.value)}
                 placeholder="https://maps.google.com/maps/dir/..."
               />
-              <div className="hint">Open Maps → Route → ⋮ → Route delen → kopieer link</div>
+              <div className="hint">
+                Open Maps → zoek route → ⋮ → <em>Route delen</em> → kopieer link.<br/>
+                ✅ Verkorte links (goo.gl) werken ook.
+              </div>
             </div>
 
             <div className="section-label">⏱ Interval</div>
@@ -201,7 +204,7 @@ export default function Home() {
               <span className="interval-unit">{mode === 'km' ? 'km' : 'uur'} per wissel</span>
             </div>
 
-            {error && <div className="error-msg">⚠️ {error}</div>}
+            {error {error && <div className="error-msg">⚠️ {error}</div>}{error && <div className="error-msg">⚠️ {error}</div>} <div className="error-msg" style={{whiteSpace:"pre-wrap"}}>⚠️ {error}</div>}
 
             <button className="btn-primary" onClick={planRoute} disabled={loading}>
               {loading ? <><span className="spin">⟳</span> Berekenen...</> : '🗺 Plan wisselstops'}
