@@ -204,7 +204,7 @@ export default function Home() {
               <span className="interval-unit">{mode === 'km' ? 'km' : 'uur'} per wissel</span>
             </div>
 
-            {error {error && <div className="error-msg">⚠️ {error}</div>}{error && <div className="error-msg">⚠️ {error}</div>} <div className="error-msg" style={{whiteSpace:"pre-wrap"}}>⚠️ {error}</div>}
+            {error && <div className="error-msg" style={{whiteSpace:"pre-wrap"}}>⚠️ {error}</div>}
 
             <button className="btn-primary" onClick={planRoute} disabled={loading}>
               {loading ? <><span className="spin">⟳</span> Berekenen...</> : '🗺 Plan wisselstops'}
